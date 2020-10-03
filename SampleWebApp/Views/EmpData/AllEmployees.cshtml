@@ -1,0 +1,44 @@
+﻿@model List<SampleWebApp.Models.EmpTable>
+@{ Layout = null; }
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>All Employees</title>
+</head>
+<body>
+    <nav>
+        <div>
+            @Html.ActionLink("NEW REGISTRATION FOR FRESHERS", "NewEmployee")
+        </div>  
+    </nav>
+    <h1>----------------ALL EMPLOYEE DETAILS-----------------</h1>
+    <hr />
+    <div>
+        <table  cellpadding="5" border="1" width="100%">
+            <tr>
+                <th>Employee ID</th>
+                <th>Employee Name</th>
+                <th>Employee Address</th>
+                <th>Employee Salary</th>
+                <td>Options</td>
+            </tr>
+            @foreach (var emp in Model)
+            {
+<tr>
+    <td>@emp.EmpId</td>
+    <td>@emp.EmpName</td>
+    <td>@emp.EmpAddress</td>
+    <td>@emp.EmpSalary</td>
+    <td>
+        @Html.ActionLink("Modify", "Find", new { id = emp.EmpId })
+
+        @Html.ActionLink("Remove", "Delete", new { id = emp.EmpId })
+    </td>
+</tr>            }
+        </table>
+    </div>
+</body>
+</html>
